@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coderman.business.mapper.ProductMapper">
+    <!--库存列表-->
+    <update id="editBatch" parameterType="java.util.List">
+        <if test="list != null and list.size >0 ">
+            <foreach collection="list" item="index" separator=";">
+                update biz_product set status = #{index.status} where id = #{index.id}
+            </foreach>
+        </if>
+    </update>
+</mapper>
